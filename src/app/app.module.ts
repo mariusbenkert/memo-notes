@@ -11,8 +11,10 @@ import { EditorpageComponent } from './note/pages/editorpage/editorpage.componen
 import { NoteslistComponent } from './note/components/noteslist/noteslist.component';
 import { NotesitemComponent } from './note/components/notesitem/notesitem.component';
 import { EditorComponent } from './note/components/editor/editor.component';
-import { NavigationlistComponent } from './shared/navigation/navigationlist/navigationlist/navigationlist.component';
-import { NavigationitemComponent } from './shared/navigation/navigationlist/navigationitem/navigationitem/navigationitem.component';
+import { MainnavigationComponent } from './shared/navigation/mainnavigation/mainnavigation.component';
+import {NavigationlistComponent} from './shared/navigation/navigationlist/navigationlist.component';
+import { NavigationitemComponent } from './shared/navigation/navigationitem/navigationitem.component';
+import { MainheaderComponent } from './shared/navigation/mainheader/mainheader.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,10 @@ import { NavigationitemComponent } from './shared/navigation/navigationlist/navi
     NoteslistComponent,
     NotesitemComponent,
     EditorComponent,
+    MainnavigationComponent,
     NavigationlistComponent,
-    NavigationitemComponent
+    NavigationitemComponent,
+    MainheaderComponent
   ],
   imports: [
     BrowserModule,
