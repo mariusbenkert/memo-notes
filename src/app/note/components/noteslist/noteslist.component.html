@@ -1,1 +1,3 @@
-<p>noteslist works!</p>
+<div class="notes-list">
+    <app-notesitem *ngFor="let note of notesList" [title]="note.title" [body]="note.body"> </app-notesitem>
+</div>

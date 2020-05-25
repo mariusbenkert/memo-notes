@@ -1,1 +1,11 @@
-<p>notesitem works!</p>
+<div #container class="note-card-container">
+
+    <div class="note-card-content" (click)="openEditor()">
+
+        <h1 class="note-card-title">{{title}}</h1>
+
+        <div markdown class="note-card-body" [data]="body"></div>            
+
+    </div>
+
+</div>
