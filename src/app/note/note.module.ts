@@ -6,6 +6,8 @@ import { EditorComponent } from './components/editor/editor.component';
 import { NgModule, SecurityContext } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,7 @@ import { MarkdownModule } from 'ngx-markdown';
     NotesitemComponent,
     NoteslistComponent,
     EditorpageComponent,
+    SearchbarComponent,
   ],
   imports: [
     CommonModule,
@@ -20,6 +23,7 @@ import { MarkdownModule } from 'ngx-markdown';
       sanitize: SecurityContext.NONE,
     }),
     FormsModule,
+    DragDropModule,
   ],
   entryComponents: [EditorComponent],
   exports: [EditorpageComponent, NoteslistComponent],
