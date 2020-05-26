@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CreatenoteComponent } from './components/createnote/createnote.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     NoteslistComponent,
     EditorpageComponent,
     SearchbarComponent,
+    CreatenoteComponent,
   ],
   imports: [
     CommonModule,

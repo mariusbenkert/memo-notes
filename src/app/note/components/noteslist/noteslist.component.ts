@@ -1,4 +1,4 @@
-import { NoteserviceService } from './../note.service';
+import { NoteService } from './../note.service';
 import { Note } from './../note';
 import { Component, OnInit } from '@angular/core';
 import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
@@ -11,7 +11,7 @@ import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 export class NoteslistComponent implements OnInit {
   notesList: Note[];
 
-  constructor(private noteService: NoteserviceService) {}
+  constructor(private noteService: NoteService) {}
 
   drop(event: CdkDragDrop<Note[]>) {
     console.log('Drag');
@@ -19,7 +19,11 @@ export class NoteslistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.notesList = this.noteService.getAllNotes();
-    console.log(this.notesList);
+    // this.noteService.getAllNotes().subscribe((data) => {
+    //   this.notesList = data;
+    // });
+    this.noteService.getAllNotes().subscribe((noteList) => {
+      this.notesList = noteList;
+    });
   }
 }

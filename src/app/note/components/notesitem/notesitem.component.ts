@@ -25,7 +25,7 @@ export class NotesitemComponent {
       this.body = data.body;
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe(() => {
       sub.unsubscribe();
     });
   }

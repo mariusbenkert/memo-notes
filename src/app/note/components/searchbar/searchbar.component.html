@@ -1,4 +1,4 @@
 <div class="search"> 
-    <input type="text" name="search" placeholder="Search Note...">    
+    <input type="text" name="search" placeholder="Search Note..." (keyup)="searchForResults()" [(ngModel)]="searchTerm">    
 </div>
 
