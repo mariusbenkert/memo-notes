@@ -14,6 +14,7 @@ import { NavigationitemComponent } from './shared/navigation/navigationitem/navi
 import { MainheaderComponent } from './shared/navigation/mainheader/mainheader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LayoutComponent } from './shared/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     NavigationlistComponent,
     NavigationitemComponent,
     MainheaderComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
