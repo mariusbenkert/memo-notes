@@ -14,7 +14,6 @@ import { MainnavigationComponent } from './shared/navigation/mainnavigation/main
 import { NavigationlistComponent } from './shared/navigation/navigationlist/navigationlist.component';
 import { NavigationitemComponent } from './shared/navigation/navigationitem/navigationitem.component';
 import { MainheaderComponent } from './shared/navigation/mainheader/mainheader.component';
-import { LayoutComponent } from './shared/layout/layout.component';
 import { ButtonComponent } from './shared/button/button.component';
 import { HomeComponent } from './user/pages/home/home.component';
 
@@ -29,7 +28,6 @@ import { HomeComponent } from './user/pages/home/home.component';
     NavigationlistComponent,
     NavigationitemComponent,
     MainheaderComponent,
-    LayoutComponent,
     ButtonComponent,
     HomeComponent
   ],

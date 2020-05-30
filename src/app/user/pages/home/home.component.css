@@ -1,0 +1,55 @@
+.home__container {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.home__title {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 3rem;
+}
+
+.home__button-container {
+  margin-top: 40px;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+
+.home__button-container button {
+  margin: 10px;
+}
+
+.home__link {
+  display: inline-block;
+  margin: 20px;
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+.home__link:focus {
+  outline: none;
+}
+
+.home__grid-container {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.home__grid-text {
+  font-size: 20px;
+  text-align: justify;
+}
+
+.md-96 {
+  font-size: 96px;
+}
+
+.md-96 span {
+  border: 1px solid black;
+}

@@ -6,27 +6,27 @@ import { SignupComponent } from './user/pages/signup/signup.component';
 import { EditorpageComponent } from './note/pages/editorpage/editorpage.component';
 
 
-// const appRoutes: Routes = [
-//   {
-//     path: "",
-//     component: HomeComponent,
-//   },
-//   {
-//     path: "login",
-//     component: LoginComponent
-//   },
-//   {
-//     path: "signup",
-//     component: SignupComponent
-//   },
-//   {
-//     path: "editor",
-//     component: EditorpageComponent
-//   }
-// ];
+const appRoutes: Routes = [
+  {
+    path: "",
+    component: HomeComponent,
+  },
+  {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: "signup",
+    component: SignupComponent
+  },
+  {
+    path: "editor",
+    component: EditorpageComponent
+  }
+];
 
 @NgModule({
-  // imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

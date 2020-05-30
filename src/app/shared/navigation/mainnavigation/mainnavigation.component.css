@@ -1,3 +1,11 @@
 .main-navigation__nav {
   height: 100%;
 }
+
+.main-navigation__title {
+  cursor: pointer;
+}
+
+.main-navigation__title:focus {
+  outline: none;
+}

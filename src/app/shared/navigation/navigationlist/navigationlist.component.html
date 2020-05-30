@@ -1,3 +1,3 @@
 <ul class="navigationlist">
-  <app-navigationitem *ngFor="let item of navItems">{{item.name}}</app-navigationitem>
+  <app-navigationitem [path]="item.path" *ngFor="let item of navItems" >{{item.name}}</app-navigationitem>
 </ul>
