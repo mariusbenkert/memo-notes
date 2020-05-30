@@ -1,1 +1,40 @@
-<p>Home Component!</p>
+<div class="home__container">
+  <h2 class="home__title">The quick way to share notes for anything.</h2>
+  <div class="home__button-container">
+    <button class="btn btn-primary btn-big" routerLink="/login">Login</button>
+    <button class="btn btn-big" routerLink="/signup">Sign up</button>
+  </div>
+  <span routerLink="/editor" class="home__link">Contine without signing in!</span>
+  <div class="home__grid-container">
+    <div>
+      <i class="material-icons md-96">
+        create
+      </i>
+      <p class="home__grid-text">
+        Getting started with Splitlist couldn't be easier. No registration
+        required - simply click the create button above to make a list, and
+        start typing right away. It's that simple!
+      </p>
+    </div>
+    <div>
+      <span class="material-icons md-96">
+        share
+      </span>
+      <p class="home__grid-text">
+        Share your list with the click of a button. Just toss the link to your
+        friends or family members, and you're ready to start collaborating on
+        grocery lists, to-do lists and more.
+      </p>
+    </div>
+    <div>
+      <span class="material-icons md-96">
+        devices
+      </span>
+      <p class="home__grid-text">
+        Does your device have a web browser? Then it works with Splitlist.
+        Access and edit your lists on your phone, tablet or computer. The lists
+        will sync on all your devices in real-time.
+      </p>
+    </div>
+  </div>
+</div>

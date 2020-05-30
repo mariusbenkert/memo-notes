@@ -1,0 +1,14 @@
+.ipt {
+  margin: 5px 0;
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+  padding: 12px 6px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+}
+
+.ipt:focus {
+  /* outline: #44bd32 solid 2px; */
+  outline: none;
+}
