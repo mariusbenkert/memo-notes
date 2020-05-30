@@ -20,6 +20,7 @@ export class CreatenoteComponent implements OnInit {
     });
 
     let newNote: Note = {
+      id: null,
       title: '',
       body: '',
     };

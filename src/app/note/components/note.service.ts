@@ -7,11 +7,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class NoteService {
   notesList: Note[] = [
-    { title: 'Test1234', body: 'wfoinwifni' },
-    { title: 'Test5678', body: 'dwifniwnff' },
-    { title: 'Dominik stinkt', body: 'Danke fürs zuhören' },
-    { title: 'In der Bootsfahrschule', body: 'hab ich gelernt, dass...' },
-    { title: 'Ich bin so gut,', body: 'nicht mehr schön!!!' },
+    { id: 1, title: 'Test1234', body: 'wfoinwifni' },
+    { id: 2, title: 'Test5678', body: 'dwifniwnff' },
+    { id: 3, title: 'Dominik stinkt', body: 'Danke fürs zuhören' },
+    {
+      id: 4,
+      title: 'In der Bootsfahrschule',
+      body: 'hab ich gelernt, dass...',
+    },
+    { id: 5, title: 'Ich bin so gut,', body: 'nicht mehr schön!!!' },
   ];
 
   // DAS HIER IST MIR NOCH NICHT SO GANZ SCHLÜSSIG //
@@ -20,10 +24,6 @@ export class NoteService {
   public notesListValue = this.notesListSubject.getValue();
 
   constructor() {}
-
-  getAllNotes(): Observable<Note[]> {
-    return this.notes$;
-  }
 
   /* Bug */
   // wenn man gerade am note suchen ist und dann neue Notiz erstellt

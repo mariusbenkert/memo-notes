@@ -22,7 +22,7 @@ export class NoteslistComponent implements OnInit {
     // this.noteService.getAllNotes().subscribe((data) => {
     //   this.notesList = data;
     // });
-    this.noteService.getAllNotes().subscribe((noteList) => {
+    this.noteService.notes$.subscribe((noteList) => {
       this.notesList = noteList;
     });
   }

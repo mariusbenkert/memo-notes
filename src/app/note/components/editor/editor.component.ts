@@ -19,7 +19,8 @@ export class EditorComponent {
     public dialogRef: MatDialogRef<EditorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Note
   ) {
-    this.editorNote = { title: data.title, body: data.body };
+    console.log('Injected Data: ', data);
+    this.editorNote = { id: data.id, title: data.title, body: data.body };
   }
 
   onAdd = new EventEmitter();

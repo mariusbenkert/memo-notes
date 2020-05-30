@@ -1,0 +1,15 @@
+<ng-container
+    *ngIf="noteNotFound; then notFound; else found">
+</ng-container>
+
+<ng-template #notFound>
+    <div>
+        <h1> Error: Note not found </h1>
+    </div> 
+</ng-template>
+
+<ng-template #found>
+    <div> 
+        <h1> Note found!!!</h1>
+    </div>
+</ng-template>

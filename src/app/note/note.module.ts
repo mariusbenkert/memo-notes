@@ -10,6 +10,7 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CreatenoteComponent } from './components/createnote/createnote.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NotepageComponent } from './pages/notepage/notepage.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     EditorpageComponent,
     SearchbarComponent,
     CreatenoteComponent,
+    NotepageComponent,
   ],
   imports: [
     CommonModule,
