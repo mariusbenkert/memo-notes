@@ -1,6 +1,20 @@
-<div (keyup)="update()">
-    <input class="margin-top" type="text" [(ngModel)]="this.data.title">
-    
-    <textarea [(ngModel)]="this.data.body"></textarea>    
-</div>
+    <div (keyup)="update()">
+        <input class="margin-top" type="text" maxlength="25" [(ngModel)]="editorNote.title">
+
+        <div class="editor-btn">
+            <button title="Bold" (click)="makeBold()"><i class="material-icons">format_bold</i></button>
+            <button title="Italic"><i class="material-icons">format_italic</i></button>
+            <button title="Heading"><i class="material-icons">title</i></button>
+            <button title="Strikethrough"><i class="material-icons">strikethrough_s</i></button>
+            <button title="Unordered List"><i class="material-icons">list</i></button>
+            <button title="Ordered List"><i class="material-icons">format_list_numbered</i></button>
+            <button title="Check List"><i class="material-icons">check_box</i></button>
+            <button title="Blockquote"><i class="material-icons">format_quote</i></button>
+            <button title="Code"><i class="material-icons">code</i></button>
+            <button title="Table"><i class="material-icons">border_all</i></button>
+        </div>
+        
+        <textarea id="editor-txtArea" [(ngModel)]="editorNote.body" (click)="getMarkedPosition($event)"></textarea>    
+    </div>    
+
 
