@@ -14,7 +14,7 @@
             <button title="Table"><i class="material-icons">border_all</i></button>
         </div>
         
-        <textarea id="editor-txtArea" [(ngModel)]="editorNote.body" (click)="getMarkedPosition($event)"></textarea>    
+        <textarea id="editor-txtArea" [(ngModel)]="editorNote.body" on-select="getMarkedPosition($event)"></textarea>    
     </div>    
 
 

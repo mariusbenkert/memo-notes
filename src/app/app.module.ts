@@ -1,8 +1,13 @@
 import { NoteModule } from './note/note.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,19 +34,20 @@ import { HomeComponent } from './user/pages/home/home.component';
     NavigationitemComponent,
     MainheaderComponent,
     ButtonComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    NoteModule
+    NoteModule,
   ],
   // providers: [{ provide: MatDialogRef, useValue: {} },
   //   { provide: MAT_DIALOG_DATA, useValue: [] }],
   providers: [],
   bootstrap: [AppComponent],
-  exports: []
+  exports: [],
 })
 export class AppModule {}

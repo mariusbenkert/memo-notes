@@ -36,6 +36,7 @@ export class EditorComponent {
       this.markedPosStart,
       this.markedPosEnd - this.markedPosStart
     );
+    console.log('getMarkedPosition: ', this.markedPosStart, this.markedPosEnd);
   }
 
   // WHAT TO DO:
@@ -43,17 +44,86 @@ export class EditorComponent {
   // Wir müssen: vor start und nach ende chars einfügen
 
   makeBold() {
-    let boldString = '**';
+    const boldString = '**';
+    console.log(this.markedString);
 
-    let newString = [
-      this.editorNote.body.slice(0, this.markedPosStart),
-      boldString,
-      this.editorNote.body.slice(this.markedPosStart, this.markedPosEnd),
-      boldString,
-      this.editorNote.body.slice(this.markedPosEnd),
-    ].join('');
-    console.log(newString);
-    this.editorNote.body = newString;
-    this.update();
+    let newString;
+
+    // console.log(
+    //   'start: ',
+    //   this.editorNote.body.slice(this.markedPosStart - 2, this.markedPosStart)
+    // );
+    // console.log(
+    //   'end: ',
+    //   this.editorNote.body.slice(this.markedPosEnd, this.markedPosEnd + 2),
+    //   this.editorNote.body.slice(this.markedPosEnd, this.markedPosEnd + 2)
+    //     .length
+    // );
+
+    if (this.checkIfMarked(boldString)) {
+      const word = this.editorNote.body.slice(
+        this.markedPosStart - 2,
+        this.markedPosEnd + 2
+      );
+      const updatedWord = this.removeMarked(word, '*');
+      console.log('updatedWord: ', updatedWord);
+      const copyEditor = this.editorNote.body.slice();
+      newString = `${copyEditor.slice(
+        0,
+        this.markedPosStart - 2
+      )} ${updatedWord} ${copyEditor.slice(this.markedPosEnd + 2)}`;
+    } else {
+      // newString = [
+      //   this.editorNote.body.slice(0, this.markedPosStart),
+      //   boldString,
+      //   this.editorNote.body.slice(this.markedPosStart, this.markedPosEnd),
+      //   boldString,
+      //   this.editorNote.body.slice(this.markedPosEnd),
+      // ].join('');
+
+      newString = `${this.editorNote.body.slice(
+        0,
+        this.markedPosStart
+      )} ${boldString}${
+        this.markedString
+      }${boldString} ${this.editorNote.body.slice(this.markedPosEnd)}`;
+    }
+
+    console.log('newstring: ', newString);
+
+    console.log('Position: ', this.markedPosStart, this.markedPosEnd);
+    if (this.markedPosStart !== null && this.markedPosEnd !== null) {
+      console.log('im in! updateing...');
+      this.editorNote.body = newString;
+      this.update();
+    }
+
+    this.markedPosStart = null;
+    this.markedPosEnd = null;
+  }
+
+  checkIfMarked(s: string) {
+    const start = this.editorNote.body.slice(
+      this.markedPosStart - 2,
+      this.markedPosStart
+    );
+    const end = this.editorNote.body.slice(
+      this.markedPosEnd,
+      this.markedPosEnd + 2
+    );
+    if (start === s && end === s) {
+      return true;
+    }
+    return false;
+  }
+
+  removeMarked(word: string, patternChar: string): string {
+    const newWord = word.split('');
+
+    const result = newWord.filter((char) => {
+      return char !== patternChar;
+    });
+
+    return result.join('');
   }
 }

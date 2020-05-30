@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
     '../../../../styles/label.css',
     '../../../../styles/button.css',
     '../../../../styles/input.css',
-    '../../../../styles/form.css'
+    '../../../../styles/form.css',
   ],
 })
-export class LoginComponent implements OnInit {
-  constructor() {}
+export class LoginComponent {
+  @ViewChild('f', { static: false }) loginForm: NgForm;
 
-  ngOnInit(): void {}
+  onSubmit() {
+    console.log(this.loginForm);
+  }
 }
