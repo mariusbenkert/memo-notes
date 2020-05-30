@@ -14,6 +14,7 @@ export class NotesitemComponent {
   constructor(public dialog: MatDialog) {}
 
   openEditor(): void {
+    console.log('open editor');
     const dialogRef = this.dialog.open(EditorComponent, {
       width: '500px',
       data: { title: this.title, body: this.body },

@@ -1,6 +1,8 @@
 import { NoteModule } from './note/note.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,9 +14,9 @@ import { MainnavigationComponent } from './shared/navigation/mainnavigation/main
 import { NavigationlistComponent } from './shared/navigation/navigationlist/navigationlist.component';
 import { NavigationitemComponent } from './shared/navigation/navigationitem/navigationitem.component';
 import { MainheaderComponent } from './shared/navigation/mainheader/mainheader.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
 import { LayoutComponent } from './shared/layout/layout.component';
+import { ButtonComponent } from './shared/button/button.component';
+import { HomeComponent } from './user/pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,15 +30,20 @@ import { LayoutComponent } from './shared/layout/layout.component';
     NavigationitemComponent,
     MainheaderComponent,
     LayoutComponent,
+    ButtonComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    NoteModule,
+    NoteModule
   ],
+  // providers: [{ provide: MatDialogRef, useValue: {} },
+  //   { provide: MAT_DIALOG_DATA, useValue: [] }],
   providers: [],
   bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule {}

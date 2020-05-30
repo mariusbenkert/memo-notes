@@ -12,8 +12,8 @@ export class NavigationlistComponent {
       path: '/login',
     },
     {
-      name: 'share',
-      path: '/share'
+      name: 'signup',
+      path: '/signup'
     }
   ];
 }

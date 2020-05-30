@@ -13,6 +13,7 @@ export class CreatenoteComponent implements OnInit {
   constructor(public dialog: MatDialog, private noteService: NoteService) {}
 
   addNote() {
+    console.log('add note');
     const dialogRef = this.dialog.open(EditorComponent, {
       width: '500px',
       data: { title: '', body: '' },
