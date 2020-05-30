@@ -1,0 +1,14 @@
+.form-container {
+  background: white;
+  width: 460px;
+  height: auto;
+  margin: 16px auto;
+  border-radius: 2px;
+  position: relative;
+  text-align: start;
+  padding: 16px;
+}
+
+.form-element {
+  padding: 10px 0;
+}
