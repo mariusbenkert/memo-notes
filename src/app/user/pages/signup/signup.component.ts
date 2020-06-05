@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './../../../shared/auth/auth.service';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -11,8 +14,30 @@ import { Component, OnInit } from '@angular/core';
     '../../../../styles/form.css',
   ],
 })
-export class SignupComponent implements OnInit {
-  constructor() {}
+export class SignupComponent {
+  @ViewChild('f', { static: false }) signupForm: NgForm;
 
-  ngOnInit(): void {}
+  constructor(private authService: AuthService, private router: Router) {}
+
+  onSubmit() {
+    console.log(this.signupForm.value);
+
+    if (!this.signupForm.valid) {
+      return;
+    }
+
+    const { email, name, password, passwordConfirm } = this.signupForm.value;
+
+    this.authService.signup(email, name, password, passwordConfirm).subscribe(
+      (resData) => {
+        console.log(resData);
+        localStorage.setItem('Token', resData.token);
+        this.router.navigate(['/editor']);
+      },
+      (errorMessage) => {
+        console.log(errorMessage);
+      }
+    );
+    this.signupForm.reset();
+  }
 }

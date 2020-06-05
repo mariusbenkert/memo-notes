@@ -1,7 +1,6 @@
 .note-card-container {
     position: relative;
     background: white;
-    box-shadow: 1px 1px 2px 0px #000000;
     
     border-style: solid;
     border-radius: 8px;
@@ -13,9 +12,15 @@
 
 .note-card-container:hover {
     cursor: pointer;
-    box-shadow: 1px 1px 5px 1px #000000;
+    box-shadow: 0px 1px 5px 0px #aaa5a5;
 }
 
+.note-empty {
+    position: relative;
+    margin: 10px;
+    width: 100px;
+    height: 104px;
+}
 
 .note-card-content {
     padding: 15px;
@@ -30,6 +35,7 @@
 }
 
 .note-card-body {
+    padding-bottom: 11px;
     margin-top: 5px;
     position: relative;
 
@@ -38,28 +44,60 @@
     overflow: hidden;
 
     word-wrap: break-word;
+}
 
+.menue-container {
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+
+    bottom: 6px;
+    left: 6px;
+
+    transition: visibility 0s linear 300ms, opacity 300ms;
+    /* margin:6px; */
+
+    /* background-color: red; */
+    
+}
+
+.note-card-container:hover .menue-container {
     visibility: visible;
     opacity: 1;
-    transition: opacity 2s linear;
+    transition: visibility 0s linear 0s, opacity 300ms;
 }
 
-.p-margin {
-    margin-top: 0px;
-    margin-bottom: 0px;
+.note-empty:hover .menue-container {
+    background-color: blue;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 300ms;
 }
 
-/* FUNKTIONIERT NICHT DER DRECK */
-.fade-out {
+.round {
+  margin: 3px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: white;
+}
+
+.round:hover {
+    background-color: rgb(170, 163, 163);
+}
+
+.round .icon-share {
     position: absolute;
-    
-    bottom: 10px;
-    height: 30%;
-    width: 88%;
-    
-    pointer-events: none;
-
-    /* background: red; */
-    background-image: linear-gradient(to bottom, transparent, white);
+    margin-top: 2px;
+    color: #4f5b66;
 }
 
+.round .icon-delete {
+    position: absolute;
+    margin-left: 2px;
+    margin-top: 2px;
+    color: #4f5b66;
+}

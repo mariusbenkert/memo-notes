@@ -9,24 +9,27 @@ import { Note } from '../../components/note';
   styleUrls: ['./notepage.component.css'],
 })
 export class NotepageComponent implements OnInit {
+  // TODO: NotePage bekommt nicht die aktuellen Daten
+  // BehaviourSubject in NoteService resettet sich bei ändern des Paths?
+
   id: number;
   allNotes: Note[];
   relevantNote: Note;
   noteNotFound: boolean;
 
   constructor(private route: ActivatedRoute, private noteService: NoteService) {
-    this.allNotes = this.noteService.notesListValue;
+    console.log('Constructor NotePage');
+    this.noteService.notes$.subscribe((notes) => {
+      this.allNotes = notes;
+    });
 
     this.route.params.subscribe((params) => {
       this.id = +params.id;
       // check if id exists in database
       // if true: display it
       // if false: note not found
-
-      console.log('ID:', this.id);
     });
 
-    console.log(this.allNotes);
     this.relevantNote = this.allNotes.find((note) => {
       return note.id === this.id;
     });
@@ -34,7 +37,8 @@ export class NotepageComponent implements OnInit {
     if (this.relevantNote === undefined) {
       this.noteNotFound = true;
     }
-    console.log(this.relevantNote);
+
+    console.log(this.relevantNote.body);
   }
 
   ngOnInit(): void {}

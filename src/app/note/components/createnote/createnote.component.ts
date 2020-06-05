@@ -12,6 +12,9 @@ import { Component, OnInit } from '@angular/core';
 export class CreatenoteComponent implements OnInit {
   constructor(public dialog: MatDialog, private noteService: NoteService) {}
 
+  // TODO: Note -> erstellen -> "Empty Note" wird angezeigt,
+  // allerdings beim direkten editieren wird nicht geupdated, sondern erst beim erneuten Ausführen
+
   addNote() {
     console.log('add note');
     const dialogRef = this.dialog.open(EditorComponent, {
@@ -35,9 +38,11 @@ export class CreatenoteComponent implements OnInit {
       sub.unsubscribe();
     });
 
-    // get Data
-
     this.noteService.addNote(newNote);
+  }
+
+  getNotes() {
+    this.noteService.getNotes();
   }
 
   ngOnInit(): void {}

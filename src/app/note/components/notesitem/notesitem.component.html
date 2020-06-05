@@ -1,13 +1,26 @@
 <div #container class="note-card-container">
-
-    <div class="note-card-content" (click)="openEditor()">
-
-        <h1 class="note-card-title">{{title}}</h1>
-
-        <div markdown class="note-card-body" [data]="body"></div>       
-        
-        <div class="fade-out"></div> 
-
+    
+    <!-- Note is empty -->
+    <div *ngIf="isEmpty;else notEmpty">
+        <div class="note-empty" (click)="openEditor()">Empty Note</div> 
     </div>
 
+    <!-- Note is not empty -->
+    <ng-template #notEmpty> 
+        <div class="note-card-content" (click)="openEditor()">
+            
+            <h1 class="note-card-title">{{title}}</h1>
+            
+            <div markdown class="note-card-body" [data]="body"></div>       
+            
+        </div>
+    </ng-template>
+    <div class="menue-container"> 
+        <div class="round" (click)="shareNote()">
+            <span class="icon-share"><i class="material-icons md-8">share</i></span>
+        </div>
+        <div class="round" (click)="deleteNote()">
+            <span class="icon-delete"><i class="material-icons md-8">delete</i></span>
+        </div> 
+    </div>
 </div>

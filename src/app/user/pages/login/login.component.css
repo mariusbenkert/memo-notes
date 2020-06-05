@@ -12,6 +12,11 @@
   border: 1px solid green;
 }
 
+.login__spinner {
+  margin-top: 3rem;
+  text-align: center;
+}
+
 .paper-shadow {
   position: absolute;
   top: 0;

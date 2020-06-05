@@ -11,6 +11,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CreatenoteComponent } from './components/createnote/createnote.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotepageComponent } from './pages/notepage/notepage.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from '../shared/auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,13 @@ import { NotepageComponent } from './pages/notepage/notepage.component';
   ],
   // providers: [{ provide: MatDialogRef, useValue: {} },
   //   { provide: MAT_DIALOG_DATA, useValue: [] }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   entryComponents: [EditorComponent],
   exports: [EditorpageComponent, NoteslistComponent, CreatenoteComponent],
 })

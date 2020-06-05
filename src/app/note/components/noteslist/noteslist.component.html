@@ -1,3 +1,3 @@
 <div cdkDropList cdkDropListOrientation="horizontal" class="notes-list" (cdkDropListDropped)="drop($event)">
-    <app-notesitem *ngFor="let note of notesList" [title]="note.title" [body]="note.body" cdkDrag>{{notesList}}> </app-notesitem>
+    <app-notesitem *ngFor="let note of notesList" [title]="note.title" [body]="note.body" [id]="note.id" cdkDrag>{{notesList}}> </app-notesitem>
 </div>
