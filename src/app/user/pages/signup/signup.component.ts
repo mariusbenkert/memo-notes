@@ -31,7 +31,7 @@ export class SignupComponent {
     this.authService.signup(email, name, password, passwordConfirm).subscribe(
       (resData) => {
         console.log(resData);
-        localStorage.setItem('Token', resData.token);
+        localStorage.setItem('token', resData.token);
         this.router.navigate(['/editor']);
       },
       (errorMessage) => {

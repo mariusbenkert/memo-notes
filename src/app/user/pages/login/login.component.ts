@@ -33,7 +33,7 @@ export class LoginComponent {
     this.authService.login(email, password).subscribe(
       (resData) => {
         this.isLoading = false;
-        localStorage.setItem('Token', resData.token);
+        localStorage.setItem('token', resData.user.token);
         console.log(resData);
         this.router.navigate(['/editor']);
       },
