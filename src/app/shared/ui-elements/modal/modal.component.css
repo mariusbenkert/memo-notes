@@ -1,0 +1,28 @@
+.modal {
+  position: absolute;
+  top: 30%;
+  left: 30vw;
+  width: 40vw;
+  min-height: 150px;
+  border-radius: 3px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  z-index: 100;
+}
+
+.modal__container {
+  text-align: center;
+}
+
+.modal__text {
+  padding: 20px 0;
+}
+
+.modal__title {
+  margin: 0;
+}
+
+.modal__close-button {
+  width: 100%;
+}

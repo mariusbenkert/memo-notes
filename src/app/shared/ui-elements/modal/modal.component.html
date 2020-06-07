@@ -1,0 +1,13 @@
+<app-backdrop (close)="onClose()"></app-backdrop>
+<div class="modal">
+  <div class="modal__container">
+    <span class="material-icons" style="font-size: 48px; color: red;">
+      warning
+    </span>
+    <h2 class="modal__title">An Error Occurred</h2>
+    <div class="modal__text">
+      <p>{{ message }}</p>
+    </div>
+    <button class="btn btn-danger modal__close-button" (click)="onClose()">Close</button>
+  </div>
+</div>
