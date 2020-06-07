@@ -3,6 +3,7 @@
   <span class="material-icons">
     article
   </span>
+  <app-modal [message]="error" *ngIf="error" (close)="onHandleError()"></app-modal>
   <div *ngIf="isLoading" class="login__spinner">
   <app-spinner></app-spinner>
 </div>

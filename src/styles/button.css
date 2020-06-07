@@ -41,3 +41,13 @@
   background: #e2e6ea;
   border-color: #e2e6ea;
 }
+
+.btn-danger {
+  background: #e64a45;
+  border-color: #e64a45;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #e93630;
+}

@@ -20,6 +20,8 @@ import { MainheaderComponent } from './shared/navigation/mainheader/mainheader.c
 import { ButtonComponent } from './shared/button/button.component';
 import { HomeComponent } from './user/pages/home/home.component';
 import { SpinnerComponent } from './shared/ui-elements/spinner/spinner.component';
+import { ModalComponent } from './shared/ui-elements/modal/modal.component';
+import { BackdropComponent } from './shared/ui-elements/backdrop/backdrop.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { SpinnerComponent } from './shared/ui-elements/spinner/spinner.component
     ButtonComponent,
     HomeComponent,
     SpinnerComponent,
+    ModalComponent,
+    BackdropComponent,
   ],
   imports: [
     BrowserModule,

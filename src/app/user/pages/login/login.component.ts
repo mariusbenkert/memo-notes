@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   @ViewChild('f', { static: false }) loginForm: NgForm;
   isLoading = false;
+  error: string = null;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -32,16 +33,21 @@ export class LoginComponent {
     this.isLoading = true;
     this.authService.login(email, password).subscribe(
       (resData) => {
+        console.log(resData);
         this.isLoading = false;
-        localStorage.setItem('token', resData.user.token);
         console.log(resData);
         this.router.navigate(['/editor']);
       },
       (errorMessage) => {
         this.isLoading = false;
+        this.error = errorMessage;
         console.log(errorMessage);
       }
     );
     this.loginForm.reset();
+  }
+
+  onHandleError() {
+    this.error = null;
   }
 }
