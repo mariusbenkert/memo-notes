@@ -5,6 +5,7 @@ import { LoginComponent } from './user/pages/login/login.component';
 import { SignupComponent } from './user/pages/signup/signup.component';
 import { EditorpageComponent } from './note/pages/editorpage/editorpage.component';
 import { NotepageComponent } from './note/pages/notepage/notepage.component';
+import { AuthGuard } from './shared/auth/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   {
     path: 'editor',
     component: EditorpageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'note/:id',

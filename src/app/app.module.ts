@@ -22,6 +22,7 @@ import { HomeComponent } from './user/pages/home/home.component';
 import { SpinnerComponent } from './shared/ui-elements/spinner/spinner.component';
 import { ModalComponent } from './shared/ui-elements/modal/modal.component';
 import { BackdropComponent } from './shared/ui-elements/backdrop/backdrop.component';
+import { AlertMessageComponent } from './shared/ui-elements/alert-message/alert-message.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BackdropComponent } from './shared/ui-elements/backdrop/backdrop.compon
     SpinnerComponent,
     ModalComponent,
     BackdropComponent,
+    AlertMessageComponent
   ],
   imports: [
     BrowserModule,
