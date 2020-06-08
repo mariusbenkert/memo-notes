@@ -3,23 +3,43 @@
   <span class="material-icons">
     article
   </span>
-  <app-modal [message]="error" *ngIf="error" (close)="onHandleError()"></app-modal>
+  <!-- <app-modal [message]="error" *ngIf="error" (close)="onHandleError()"></app-modal> -->
   <div *ngIf="isLoading" class="login__spinner">
-  <app-spinner></app-spinner>
-</div>
-  <div class="form-container" *ngIf="!isLoading">
+    <app-spinner></app-spinner>
+  </div>
+  <div class="form-container">
     <div class="paper-shadow paper-shadow-top-z-1"></div>
     <div class="paper-shadow paper-shadow-bottom-z-1"></div>
     <form (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="form-element">
         <label for="email" class="lbl">E-Mail</label>
-        <input class="ipt" type="email" id="email" name="email" ngModel required email/>
+        <input
+          class="ipt"
+          type="email"
+          id="email"
+          name="email"
+          ngModel
+          required
+          email
+        />
       </div>
       <div class="form-element">
         <label for="password" class="lbl">Password</label>
-        <input class="ipt" type="password" id="password" name="password" ngModel required minlength="6"/>
+        <input
+          class="ipt"
+          type="password"
+          id="password"
+          name="password"
+          #password="ngModel"
+          ngModel
+          required
+          minlength="6"
+        />
       </div>
-      <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Login</button>
+      <app-alert-message [message]="error" *ngIf="error"></app-alert-message>
+      <button class="btn btn-primary" [disabled]="!f.valid" type="submit">
+        Login
+      </button>
     </form>
   </div>
 </div>

@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   @ViewChild('f', { static: false }) loginForm: NgForm;
+  @ViewChild('password', { static: false}) passwordInput: NgForm;
   isLoading = false;
   error: string = null;
 
@@ -26,11 +27,13 @@ export class LoginComponent {
       return;
     }
 
+    console.log(this.passwordInput);
     const { email, password } = this.loginForm.value;
 
     console.log(email, password);
 
     this.isLoading = true;
+    this.error = null;
     this.authService.login(email, password).subscribe(
       (resData) => {
         console.log(resData);
@@ -44,10 +47,7 @@ export class LoginComponent {
         console.log(errorMessage);
       }
     );
-    this.loginForm.reset();
-  }
-
-  onHandleError() {
-    this.error = null;
+    this.passwordInput.reset();
+    // this.loginForm.reset();
   }
 }

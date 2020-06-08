@@ -16,6 +16,10 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupComponent {
   @ViewChild('f', { static: false }) signupForm: NgForm;
+  @ViewChild('password', { static: false}) passwordInput: NgForm;
+  @ViewChild('passwordConfirm', { static: false}) passwordConfirmInput: NgForm;
+  isLoading = false;
+  error: string = null;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -28,15 +32,22 @@ export class SignupComponent {
 
     const { email, name, password, passwordConfirm } = this.signupForm.value;
 
+    this.isLoading = true;
+    this.error = null;
+
     this.authService.signup(email, name, password, passwordConfirm).subscribe(
       (resData) => {
         console.log(resData);
+        this.isLoading = false;
         this.router.navigate(['/editor']);
       },
       (errorMessage) => {
+        this.isLoading = false;
+        this.error = errorMessage;
         console.log(errorMessage);
       }
     );
-    this.signupForm.reset();
+    this.passwordInput.reset();
+    this.passwordConfirmInput.reset();
   }
 }

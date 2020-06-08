@@ -3,27 +3,44 @@
   <span class="material-icons">
     article
   </span>
+  <!-- <app-modal [message]="error" *ngIf="error" (close)="onHandleError()"></app-modal> -->
   <div class="form-container">
     <div class="paper-shadow paper-shadow-top-z-1"></div>
     <div class="paper-shadow paper-shadow-bottom-z-1"></div>
     <form (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="form-element">
         <label for="email" class="lbl">E-Mail</label>
-        <input class="ipt" type="email" name="email" ngModel/>
+        <input class="ipt" type="email" name="email" ngModel />
       </div>
       <div class="form-element">
         <label for="name" class="lbl">Username</label>
-        <input class="ipt" type="text" name="name" ngModel/>
+        <input class="ipt" type="text" name="name" ngModel />
       </div>
       <div class="form-element">
         <label for="password" class="lbl">Password</label>
-        <input class="ipt" type="password" name="password" ngModel/>
+        <input
+          class="ipt"
+          type="password"
+          name="password"
+          ngModel
+          #password="ngModel"
+        />
       </div>
       <div class="form-element">
         <label for="passwordConfirm" class="lbl">Confirm Password</label>
-        <input class="ipt" type="password" name="passwordConfirm" ngModel/>
+        <input
+          class="ipt"
+          type="password"
+          name="passwordConfirm"
+          ngModel
+          #passwordConfirm="ngModel"
+        />
       </div>
+      <app-alert-message [message]="error" *ngIf="error"></app-alert-message>
       <button class="btn btn-primary" type="submit">Signup</button>
     </form>
+  </div>
+  <div class="signup__spinner">
+    <app-spinner></app-spinner>
   </div>
 </div>
