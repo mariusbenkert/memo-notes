@@ -13,12 +13,12 @@ export class AuthInterceptorService implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
-
-    if(localStorage.getItem('token')) {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    if (userData || userData.token) {
       const modifiedRequest = request.clone({
         headers: request.headers.append(
           'Authorization',
-          'Bearer ' + localStorage.getItem('token')
+          'Bearer ' + userData.token
         ),
       });
       return next.handle(modifiedRequest);

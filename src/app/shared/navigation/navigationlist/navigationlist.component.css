@@ -8,3 +8,21 @@
   height: 100%;
   flex-direction: row;
 }
+
+.navigationlist__item {
+  list-style: none;
+  margin: 1rem;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.navigationlist__item a {
+  color: #000;
+  text-decoration: none;
+}
+
+.navigationlist__item--active {
+  border-bottom: 2px solid black;
+  font-weight: 700;
+  border-radius: 2px;
+}

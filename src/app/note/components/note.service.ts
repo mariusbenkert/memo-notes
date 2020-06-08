@@ -2,60 +2,80 @@ import { Injectable } from '@angular/core';
 import { Note } from './note';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
+
+interface NotesRespondData {
+  message: string;
+  notes: Array<Note>;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class NoteService {
-  notesList: Note[] = [
-    { id: 1, title: '', body: '' },
-    { id: 2, title: 'Test5678', body: 'dwifniwnff' },
-    { id: 3, title: 'Dominik stinkt', body: 'Danke fürs zuhören' },
-    {
-      id: 4,
-      title: 'In der Bootsfahrschule',
-      body: 'hab ich gelernt, dass...',
-    },
-    { id: 5, title: 'Ich bin so gut,', body: 'nicht mehr schön!!!' },
-  ];
+  notesList: Note[] = [];
 
   private notesListSubject = new BehaviorSubject<Note[]>(this.notesList);
   public notes$ = this.notesListSubject.asObservable();
   public notesListValue = this.notesListSubject.getValue();
 
+  private baseURL = 'http://localhost:5000/api/notes';
+
   constructor(public http: HttpClient) {}
 
   getNotes() {
     this.http
-      .get<any[]>('http://localhost:5000/api/notes/getNotes')
-      .subscribe((notes) => {
-        console.log(notes);
+      .get<NotesRespondData>(this.baseURL + '/getNotes')
+      .subscribe((respondData) => {
+        console.log('Get notes Response: ', respondData);
+        this.notesList = respondData.notes;
+        this.notesListSubject.next(respondData.notes);
       });
-    console.log('GET NOTES');
   }
 
-  addNote(note: Note) {
-    this.notesListValue.push(note);
-    this.notesListSubject.next(this.notesListValue);
+  addNote() {
+    return this.http
+      .put<any>(this.baseURL + '/create', {
+        title: '',
+        content: '',
+      })
+      .pipe(
+        tap((responseData) => {
+          this.notesList.push(responseData.note);
+          this.notesListSubject.next(this.notesList);
+        })
+      );
   }
 
-  updateNoteList(arr) {
-    this.notesListSubject.next(arr);
+  updateNote(note: Note) {
+    this.http
+      .patch(this.baseURL + '/update', {
+        title: note.title,
+        content: note.content,
+        noteId: note._id,
+      })
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 
-  deleteNote(id: number) {
-    let count = 0;
-    let index: number;
+  // updateNoteList(arr?) {
+  //   if (arr) {
+  //     this.notesListSubject.next(arr);
+  //   } else {
+  //     this.notesListSubject.next(this.notesList);
+  //   }
+  // }
 
-    this.notesListValue.forEach((note) => {
-      if (note.id === id) {
-        index = count;
-      }
-      count++;
-    });
+  deleteNote(id: string) {
+    this.http
+      .delete(this.baseURL + '/delete/' + id)
+      .subscribe((respondData) => {
+        console.log(respondData);
+      });
 
-    console.log(index);
-    this.notesListValue.splice(index, 1);
-    // this.notesListSubject.next(newArr);
+    const newNotesList = this.notesList.filter((note) => note._id !== id);
+    console.log('Delete Notes:', newNotesList);
+    this.notesListSubject.next(newNotesList);
   }
 }

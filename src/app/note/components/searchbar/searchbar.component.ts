@@ -20,13 +20,13 @@ export class SearchbarComponent implements OnInit {
     this.allNotes.forEach((note) => {
       if (
         note.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        note.body.toLowerCase().includes(this.searchTerm.toLowerCase())
+        note.content.toLowerCase().includes(this.searchTerm.toLowerCase())
       ) {
         this.matchedNotes.add(note);
       }
     });
 
-    this.noteService.updateNoteList(Array.from(this.matchedNotes));
+    // this.noteService.updateNoteList(Array.from(this.matchedNotes));
   }
 
   ngOnInit(): void {

@@ -19,7 +19,7 @@ export class EditorComponent {
     public dialogRef: MatDialogRef<EditorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Note
   ) {
-    this.editorNote = { id: data.id, title: data.title, body: data.body };
+    this.editorNote = data;
   }
 
   onAdd = new EventEmitter();
@@ -60,13 +60,13 @@ export class EditorComponent {
     // );
 
     if (this.checkIfMarked(boldString)) {
-      const word = this.editorNote.body.slice(
+      const word = this.editorNote.content.slice(
         this.markedPosStart - 2,
         this.markedPosEnd + 2
       );
       const updatedWord = this.removeMarked(word, '*');
       console.log('updatedWord: ', updatedWord);
-      const copyEditor = this.editorNote.body.slice();
+      const copyEditor = this.editorNote.content.slice();
       newString = `${copyEditor.slice(
         0,
         this.markedPosStart - 2
@@ -80,12 +80,12 @@ export class EditorComponent {
       //   this.editorNote.body.slice(this.markedPosEnd),
       // ].join('');
 
-      newString = `${this.editorNote.body.slice(
+      newString = `${this.editorNote.content.slice(
         0,
         this.markedPosStart
       )} ${boldString}${
         this.markedString
-      }${boldString} ${this.editorNote.body.slice(this.markedPosEnd)}`;
+      }${boldString} ${this.editorNote.content.slice(this.markedPosEnd)}`;
     }
 
     console.log('newstring: ', newString);
@@ -93,7 +93,7 @@ export class EditorComponent {
     console.log('Position: ', this.markedPosStart, this.markedPosEnd);
     if (this.markedPosStart !== null && this.markedPosEnd !== null) {
       console.log('im in! updateing...');
-      this.editorNote.body = newString;
+      this.editorNote.content = newString;
       this.update();
     }
 
@@ -102,11 +102,11 @@ export class EditorComponent {
   }
 
   checkIfMarked(s: string) {
-    const start = this.editorNote.body.slice(
+    const start = this.editorNote.content.slice(
       this.markedPosStart - 2,
       this.markedPosStart
     );
-    const end = this.editorNote.body.slice(
+    const end = this.editorNote.content.slice(
       this.markedPosEnd,
       this.markedPosEnd + 2
     );

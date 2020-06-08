@@ -40,7 +40,7 @@ import { AlertMessageComponent } from './shared/ui-elements/alert-message/alert-
     SpinnerComponent,
     ModalComponent,
     BackdropComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
   ],
   imports: [
     BrowserModule,

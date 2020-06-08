@@ -3,6 +3,7 @@ import { EditorComponent } from './../editor/editor.component';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Note } from '../note';
 
 @Component({
   selector: 'app-notesitem',
@@ -10,9 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./notesitem.component.css'],
 })
 export class NotesitemComponent implements OnInit {
-  @Input() id: number;
-  @Input() title: string;
-  @Input() body: string;
+  @Input() noteData: Note;
 
   isEmpty: boolean;
 
@@ -25,36 +24,37 @@ export class NotesitemComponent implements OnInit {
   openEditor(): void {
     const dialogRef = this.dialog.open(EditorComponent, {
       width: '1000px',
-      data: { title: this.title, body: this.body },
+      data: this.noteData,
     });
 
     const sub = dialogRef.componentInstance.onAdd.subscribe((data) => {
-      console.log(data.title, data.body);
-      this.title = data.title;
-      this.body = data.body;
+      console.log(data.content);
+      this.noteData.title = data.title;
+      this.noteData.content = data.content;
       this.checkIfEmpty();
     });
 
     dialogRef.afterClosed().subscribe(() => {
       sub.unsubscribe();
-      console.log(this.body);
+      console.log(this.noteData.content);
+      this.noteService.updateNote(this.noteData);
     });
   }
 
-  shareNote() {
-    console.log(this.body);
-    let notePath = '/note/' + this.id.toString(10);
-    this.router.navigate([`${notePath}`]);
-    console.log('Share', notePath);
-  }
+  // shareNote() {
+  //   console.log(this.body);
+  //   let notePath = '/note/' + this.id.toString(10);
+  //   this.router.navigate([`${notePath}`]);
+  //   console.log('Share', notePath);
+  // }
 
   deleteNote() {
     console.log('Delete');
-    this.noteService.deleteNote(this.id);
+    this.noteService.deleteNote(this.noteData._id);
   }
 
   checkIfEmpty() {
-    if (this.title == '' && this.body == '') {
+    if (this.noteData.title == '' && this.noteData.content == '') {
       this.isEmpty = true;
     } else {
       this.isEmpty = false;
@@ -62,7 +62,7 @@ export class NotesitemComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.title == '' && this.body == '') {
+    if (this.noteData.title == '' && this.noteData.content == '') {
       this.isEmpty = true;
     } else {
       this.isEmpty = false;

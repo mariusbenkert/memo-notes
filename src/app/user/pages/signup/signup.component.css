@@ -4,6 +4,14 @@
   text-align: center;
 }
 
+.ipt.ng-invalid.ng-dirty {
+  border: 1px solid red;
+}
+
+.ipt.ng-valid {
+  border: 1px solid green;
+}
+
 .paper-shadow {
   position: absolute;
   top: 0;

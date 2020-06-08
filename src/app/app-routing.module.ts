@@ -6,6 +6,7 @@ import { SignupComponent } from './user/pages/signup/signup.component';
 import { EditorpageComponent } from './note/pages/editorpage/editorpage.component';
 import { NotepageComponent } from './note/pages/notepage/notepage.component';
 import { AuthGuard } from './shared/auth/auth.guard';
+import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
 
 const appRoutes: Routes = [
   {
@@ -23,7 +24,7 @@ const appRoutes: Routes = [
   {
     path: 'editor',
     component: EditorpageComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'note/:id',
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'page-not-found',
-    component: NotepageComponent,
+    component: NotFoundComponent,
   },
   {
     path: '**',

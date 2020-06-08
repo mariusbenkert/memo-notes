@@ -9,16 +9,16 @@
     <ng-template #notEmpty> 
         <div class="note-card-content" (click)="openEditor()">
             
-            <h1 class="note-card-title">{{title}}</h1>
-            
-            <div markdown class="note-card-body" [data]="body"></div>       
+            <h1 class="note-card-title">{{noteData.title}}</h1>
+
+            <div markdown class="note-card-body" [data]="noteData.content"></div>       
             
         </div>
     </ng-template>
     <div class="menue-container"> 
-        <div class="round" (click)="shareNote()">
+        <!-- <div class="round" (click)="shareNote()">
             <span class="icon-share"><i class="material-icons md-8">share</i></span>
-        </div>
+        </div> -->
         <div class="round" (click)="deleteNote()">
             <span class="icon-delete"><i class="material-icons md-8">delete</i></span>
         </div> 

@@ -68,6 +68,10 @@ export class AuthService {
       );
   }
 
+  logout() {
+    console.log('logout!');
+  }
+
   private handleAuthentication(
     email: string,
     username: string,
@@ -89,7 +93,7 @@ export class AuthService {
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
 
-    if(!errorRes.error || !errorRes.error.message) {
+    if (!errorRes.error || !errorRes.error.message) {
       return throwError(errorMessage);
     }
 

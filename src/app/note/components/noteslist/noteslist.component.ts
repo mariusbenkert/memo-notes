@@ -19,6 +19,7 @@ export class NoteslistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.noteService.getNotes();
     this.noteService.notes$.subscribe((noteList) => {
       this.notesList = noteList;
     });

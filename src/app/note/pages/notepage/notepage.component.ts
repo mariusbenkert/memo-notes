@@ -12,7 +12,7 @@ export class NotepageComponent implements OnInit {
   // TODO: NotePage bekommt nicht die aktuellen Daten
   // BehaviourSubject in NoteService resettet sich bei ändern des Paths?
 
-  id: number;
+  _id: string;
   allNotes: Note[];
   relevantNote: Note;
   noteNotFound: boolean;
@@ -24,21 +24,21 @@ export class NotepageComponent implements OnInit {
     });
 
     this.route.params.subscribe((params) => {
-      this.id = +params.id;
+      this._id = params.id;
       // check if id exists in database
       // if true: display it
       // if false: note not found
     });
 
     this.relevantNote = this.allNotes.find((note) => {
-      return note.id === this.id;
+      return note._id === this._id;
     });
 
     if (this.relevantNote === undefined) {
       this.noteNotFound = true;
     }
 
-    console.log(this.relevantNote.body);
+    console.log(this.relevantNote.content);
   }
 
   ngOnInit(): void {}

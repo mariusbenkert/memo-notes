@@ -10,11 +10,11 @@
     <form (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="form-element">
         <label for="email" class="lbl">E-Mail</label>
-        <input class="ipt" type="email" name="email" ngModel />
+        <input class="ipt" type="email" name="email" ngModel required email/>
       </div>
       <div class="form-element">
         <label for="name" class="lbl">Username</label>
-        <input class="ipt" type="text" name="name" ngModel />
+        <input class="ipt" type="text" name="name" ngModel required minlength="6"/>
       </div>
       <div class="form-element">
         <label for="password" class="lbl">Password</label>
@@ -23,6 +23,8 @@
           type="password"
           name="password"
           ngModel
+          required
+          minlength="6"
           #password="ngModel"
         />
       </div>
@@ -33,6 +35,8 @@
           type="password"
           name="passwordConfirm"
           ngModel
+          required
+          minlength="6"
           #passwordConfirm="ngModel"
         />
       </div>
@@ -40,7 +44,7 @@
       <button class="btn btn-primary" type="submit">Signup</button>
     </form>
   </div>
-  <div class="signup__spinner">
+  <div class="signup__spinner" *ngIf="isLoading">
     <app-spinner></app-spinner>
   </div>
 </div>

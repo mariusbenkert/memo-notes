@@ -1,3 +1,15 @@
 <ul class="navigationlist">
-  <app-navigationitem [path]="item.path" *ngFor="let item of navItems" >{{item.name}}</app-navigationitem>
+  <!-- <app-navigationitem [path]="item.path" [func]="item.func" *ngFor="let item of navItems" >{{item.name}}</app-navigationitem> -->
+  <li class="navigationlist__item" routerLinkActive="navigationlist__item--active" *ngIf="!isAuthenticated">
+    <a routerLink="/login">Login</a>
+  </li>
+  <li class="navigationlist__item" routerLinkActive="navigationlist__item--active" *ngIf="!isAuthenticated">
+    <a routerLink="/signup">Signup</a>
+  </li>
+  <li class="navigationlist__item" routerLinkActive="navigationlist__item--active" *ngIf="isAuthenticated">
+    <a routerLink="/logout">Logout</a>
+  </li>
+  <li class="navigationlist__item" routerLinkActive="navigationlist__item--active" *ngIf="isAuthenticated">
+    <a routerLink="/editor">Your Notes</a>
+  </li>
 </ul>

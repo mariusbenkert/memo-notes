@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   @ViewChild('f', { static: false }) loginForm: NgForm;
-  @ViewChild('password', { static: false}) passwordInput: NgForm;
+  @ViewChild('password', { static: false }) passwordInput: NgForm;
   isLoading = false;
   error: string = null;
 
